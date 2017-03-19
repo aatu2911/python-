@@ -1,0 +1,28 @@
+import re
+
+print('this is my first calculator')
+print('to exit type"quit"')
+previous = 0
+run = True
+
+def cal_c():
+    global run
+    global previous
+    math = ""
+    if previous == 0:
+        math = input("enter math: ")
+    else:
+        math = input(str(previous))
+
+    if math == 'quit':
+        run = False
+    else:
+        math = re.sub ('[a-z,A-Z,()]','',math)
+        if previous ==0:
+            previous = eval(math)
+        else:
+            previous = eval(str(previous) + math)
+            print("you typed", previous )
+
+while run :
+    cal_c()
